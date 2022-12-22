@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Admin } from '../Model/admin';
 import { Alumni } from '../Model/alumni';
 import { Department } from '../Model/department';
-
+// adjf
 
 @Injectable({
   providedIn: 'root'
