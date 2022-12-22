@@ -1,8 +1,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="homepage"> <i class="bi bi-mortarboard-fill text-info h3" id="cap"></i> <span
-        class="text-info h3">Alumni</span><span class="h5">ManagementSystem</span></a>
+    <a class="navbar-brand py-auto" routerLink="homepage"> <i class="bi bi-mortarboard-fill text-info h3" id="cap"></i> <span
+        class="text-info h4">D-Tech</span><span class="h5">AlumniManagementSystem</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,19 @@
         <li class="nav-item me-1">
           <a class="nav-link active" routerLink="homepage" routerLinkActive="active"><i
               class="bi bi-house-fill me-1"></i>Home</a>
+        </li>
+
+        <li class="nav-item dropdown me-1">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Alumni Interest
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="">Upskillment</a></li>
+            <li><a class="dropdown-item" routerLink="">Workspace Issues</a></li>
+            <li><a class="dropdown-item" routerLink="">Career Growth</a></li>
+
+            <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#almUpdateAlumni">Update Alumni Details</a></li> -->
+          </ul>
         </li>
 
         <li class="nav-item dropdown me-1">
@@ -31,7 +44,7 @@
 
         <li class="nav-item dropdown me-1">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Department
+            D-Tech Zone Department
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="department/create-department">Add Department</a></li>
@@ -60,6 +73,8 @@
                 Alumni</a></li>
             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#onDeleteAdmin">Deactivate Admin</a>
             </li>
+            <li><a class="dropdown-item">Add Notice</a>
+            </li>
           </ul>
         </li>
 
@@ -67,13 +82,16 @@
           <a class="nav-link" >Discussion Forum</a>
         </li>
 
-        <li class="nav-item me-1">
-          <a class="nav-link my-auto" >Notifications <span class="badge bg-danger rounded-pill fs-7 px-1 py-1 my-auto">new</span></a>
-        </li>
-
-        <li class="nav-item my-auto me-1">
-          <button class="btn btn-outline-info btn-sm rounded-pill px-3 font-monospace" data-bs-toggle="modal"
-            data-bs-target="#getAlumniByRoll"><strong><i class="bi bi-search me-2"></i>GET ALUMNI</strong></button>
+        <li class="nav-item dropdown me-1">
+          <a class="nav-link my-auto dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Notifications <span class="badge bg-danger rounded-pill fs-7 px-1 py-1 my-auto">new</span></a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="">Notification 1</a></li>
+            <li><a class="dropdown-item" routerLink="">Notification 2</a></li>
+            <li><a class="dropdown-item" routerLink="">Notification 3</a></li>
+            <li><a class="dropdown-item" routerLink="">Notification 4</a></li>
+            <li><a class="dropdown-item" routerLink="">Notification 5</a></li>
+            <li><a class="dropdown-item" routerLink="">Notification 6</a></li>
+          </ul>
         </li>
 
       </ul>
@@ -98,7 +116,7 @@
 <footer class="footer bottom-0">
   <div class="container copyright">
     <span> Copyright © 2022, <a routerLink="homepage"
-        class="font-monospace link-info text-decoration-none">AlumniManagementSystem</a> - All rights reserved.</span>
+        class="font-monospace link-info text-decoration-none">WWW.D-TechAlumniManagementSystem.Com</a> - All rights reserved.</span>
   </div>
 
   <div class="container-fluid designedBy my-auto">

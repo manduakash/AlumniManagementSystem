@@ -1,9 +1,4 @@
 
-/* .nav{
-    position: fixed;
-    top: 0;
-} */
-
 .main-body{
     min-height: 100vh;
 }
@@ -14,6 +9,10 @@
     height: 50px;
     color: #fff;
     background-color: #212529;
+}
+
+.nav-item {
+    font-size: 15px;
 }
 
 .copyright {
