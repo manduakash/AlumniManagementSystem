@@ -1,0 +1,108 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<!-- alert message div -->
+<div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
+data-auto-dismiss="2000" role="alert">
+<p class="font-monospace"><strong class="fs-5 me-4">{{alert.head}} :</strong>{{alert.message}}</p>
+<button (click)="closeAlert()" type="button" class="btn-close py-2 px-2 rounded-pill my-3 mx-3"
+    data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="container bg-dark text-white rounded-top pt-3 mb-0">
+
+    <div class="col-12 text-center">
+        <h2 class="font-monospace text-center text-muted fw-bolder display-5">CREATE ALUMNI ACCOUNT</h2>
+        <div class="underline border border-5 border-bottom border-info w-50 mx-auto"></div>
+        <div class="underline border border-2 border-bottom border-info"></div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="almroll" class="col-sm-4 col-form-label"><i class="bi bi-list-ol mx-2"></i> Roll
+                No.</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="almroll"
+                    [(ngModel)]="alumni.alroll" name="alroll" placeholder="Enter Alumni Roll no. Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="almname" class="col-sm-4 col-form-label"><i class="bi bi-person-bounding-box mx-2"></i>
+                Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="almname"
+                    [(ngModel)]="alumni.alname" name="alname" placeholder="Enter Alumni Name Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="almemail" class="col-sm-4 col-form-label"><i class="bi bi-person-vcard-fill mx-2"></i>
+                Email-Id</label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control font-monospace rounded-pill" id="alemail" name="almemail"
+                    [(ngModel)]="alumni.alemail" placeholder="Enter Alumni Email-id Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="almaddress" class="col-sm-4 col-form-label"><i class="bi bi-geo-alt-fill mx-2"></i>
+                Address</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="almaddress"
+                    [(ngModel)]="alumni.aladdress" name="aladdress" placeholder="Enter Alumni Address Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="almphone" class="col-sm-4 col-form-label"><i class="bi bi-telephone-fill mx-2"></i>
+                Phone</label>
+            <div class="col-sm-8">
+                <input type="tel" class="form-control font-monospace rounded-pill" id="almphone"
+                    [(ngModel)]="alumni.alphone" name="alphone" placeholder="Enter Alumni Contact No. Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="almpassyear" class="col-sm-4 col-form-label"><i class="bi bi-mortarboard-fill mx-2"></i>
+                Graduation Completion Year</label>
+            <div class="col-sm-8">
+                <input type="tel" class="form-control font-monospace rounded-pill" id="almpassyear"
+                    [(ngModel)]="alumni.alpassyear" name="alpassyear" placeholder="Enter Alumni's Passing Year Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="departmentName" class="col-sm-4 col-form-label"><i class="bi bi-building-check mx-2"></i> Department
+                name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="departmentName"
+                    [(ngModel)]="alumni.department.dname" name="dname"
+                    placeholder="Enter Alumni's Department Name Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="departmentHead" class="col-sm-4 col-form-label"><i class="bi bi-person-check-fill mx-2"></i> Department
+                head</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="departmentHead"
+                    [(ngModel)]="alumni.department.dhead" name="dhead"
+                    placeholder="Enter Alumni's Department Head Name Here">
+            </div>
+        </div>
+
+        <div class="d-grid col-6 mx-auto py-5">
+            <button type="submit" class="btn btn-success rounded-pill font-monospace"><i class="bi bi-person-plus-fill me-2"></i>CREATE ALUMNI ACCOUNT</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- waves -->
+<div class="container px-0 my-0">
+    <div class="row mb-5">
+        <div class="waves col-12"><img src="../../../../../assets/img/wavesOpacity.svg"></div>
+    </div>
+</div>

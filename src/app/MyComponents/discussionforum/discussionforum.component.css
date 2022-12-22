@@ -1,0 +1,31 @@
+.container{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.btn-action {
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+
+.btn-action:hover {
+    border: none;
+    box-shadow: 5px 5px 10px 5px rgba(105, 105, 105, 0.199);
+    transform: scale(1.1);
+}
+.btn-action:active {
+    outline: none;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+    border: 1px solid white;
+    transform: scale(1);
+}
+
+.forum:hover{
+    transform: scale(1.03);
+    background: rgb(228, 244, 255);
+}

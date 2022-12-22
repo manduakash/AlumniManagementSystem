@@ -1,0 +1,28 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<div class="container">
+    <h2 class="font-monospace text-center text-muted fw-bolder display-5">REGISTERED DEPARTMENTS LIST</h2>
+  <div class="underline border border-5 border-bottom border-info w-50 mx-auto"></div>
+  <div class="underline border border-2 border-bottom border-info"></div>
+    <table class="table table-dark table-striped table-hover">
+        <thead class="table-info">
+          <tr>
+            <th scope="col">Department Id.</th>
+            <th scope="col">Department Name</th>
+            <th scope="col">Department Head</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let department of departments">
+            <th scope="row">{{ department.did }}</th>
+            <td>{{ department.dname }}</td>
+            <td>{{ department.dhead }}</td>
+        </tr>
+
+        </tbody>
+      </table>
+      <!-- empty message displaying -->
+      <div *ngIf="departments?.length===0" class="container text-muted text-center fs-4"><strong><i class="bi bi-emoji-frown me-2"></i>Sorry, No department records found!</strong></div>
+</div>

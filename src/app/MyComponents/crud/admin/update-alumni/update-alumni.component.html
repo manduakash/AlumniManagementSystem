@@ -1,0 +1,81 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<!-- alert message div -->
+<div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
+data-auto-dismiss="2000" role="alert">
+<p class="font-monospace"><strong class="fs-5 me-4">{{alert.head}} :</strong>{{alert.message}}</p>
+<button (click)="closeAlert()" type="button" class="btn-close py-2 px-2 rounded-pill my-3 mx-3"
+    data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="container bg-dark text-white rounded-top">
+
+    <div class="col-12">
+        <h2 class="font-monospace text-center text-muted fw-bolder display-5">UPDATE ALUMNI DETAILS</h2>
+        <div class="underline border border-5 border-bottom border-info w-50 mx-auto"></div>
+        <div class="underline border border-2 border-bottom border-info"></div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="alname" class="col-sm-4 col-form-label"><i class="bi bi-person-bounding-box mx-2"></i>
+                Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="alname" [(ngModel)]="alumni.alname"
+                    name="alname" placeholder="Enter Alumni Name">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="alemail" class="col-sm-4 col-form-label"><i class="bi bi-person-vcard-fill mx-2"></i>
+                Email-Id</label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control font-monospace rounded-pill" id="alemail" name="alemail"
+                    [(ngModel)]="alumni.alemail" placeholder="Enter Alumni Email id">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="aladdress" class="col-sm-4 col-form-label"><i class="bi bi-geo-alt-fill mx-2"></i>
+                Address</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="aladdress"
+                    [(ngModel)]="alumni.aladdress" name="aladdress" placeholder="Enter Alumni Address">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="alphone" class="col-sm-4 col-form-label"><i class="bi bi-telephone-fill mx-2"></i>
+                Phone</label>
+            <div class="col-sm-8">
+                <input type="tel" class="form-control font-monospace rounded-pill" id="alphone"
+                    [(ngModel)]="alumni.alphone" name="alphone" placeholder="Enter Alumni Phone Number">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="alpassyear" class="col-sm-4 col-form-label"><i class="bi bi-person-check-fill mx-2"></i>
+                Graduation completion Year</label>
+            <div class="col-sm-8">
+                <input type="tel" class="form-control font-monospace rounded-pill" id="alpassyear"
+                    [(ngModel)]="alumni.alpassyear" name="alpassyear" placeholder="Enter Alumni Graduation Completion Year">
+            </div>
+        </div>
+
+        <div class="d-grid col-6 mx-auto py-5">
+            <button type="submit"
+                class="btn btn-warning rounded-pill font-monospace w-50 text-white fw-bolder mx-auto"><i
+                    class="bi bi-pencil-fill me-2"></i>UPDATE ALUMNI</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- waves -->
+<div class="container wave px-0 mb-5">
+    <div class="row mb-5">
+        <div class="waves col-12"><img src="../../../../../assets/img/wavesOpacity.svg"></div>
+    </div>
+</div>

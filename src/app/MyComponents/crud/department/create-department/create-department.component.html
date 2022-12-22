@@ -1,0 +1,49 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<!-- alert message div -->
+<div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
+data-auto-dismiss="2000" role="alert">
+<p class="font-monospace"><strong class="fs-5 me-4">{{alert.head}} :</strong>{{alert.message}}</p>
+<button (click)="closeAlert()" type="button" class="btn-close py-2 px-2 rounded-pill my-3 mx-3"
+    data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="container bg-dark text-white rounded-top">
+    <div class="col-12">
+        <h2 class="font-monospace text-center text-muted fw-bolder display-5">ADD NEW DEPARTMENT</h2>
+        <div class="underline border border-5 border-bottom border-info w-50 mx-auto"></div>
+        <div class="underline border border-2 border-bottom border-info"></div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="addDeptName" class="col-sm-4 col-form-label"><i class="bi bi-person-vcard-fill mx-2"></i>
+                Department Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="addDeptName" [(ngModel)]="department.dname" name="dname"  placeholder="Enter Department Name Here">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label for="addDeptHead" class="col-sm-4 col-form-label"><i class="bi bi-person-bounding-box mx-2"></i>
+                Department Head Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control font-monospace rounded-pill" id="addDeptHead" [(ngModel)]="department.dhead" name="dhead"  placeholder="Enter Department Head Here">
+            </div>
+        </div>
+
+        <div class="d-grid col-6 mx-auto py-5">
+            <button type="submit" class="btn btn-success rounded-pill font-monospace"><i class="bi bi-plus-circle me-2"></i>ADD DEPARTMENT</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- waves -->
+<div class="container px-0 my-0">
+    <div class="row mb-5">
+        <div class="waves col-12"><img src="../../../../../assets/img/wavesOpacity.svg"></div>
+    </div>
+</div>

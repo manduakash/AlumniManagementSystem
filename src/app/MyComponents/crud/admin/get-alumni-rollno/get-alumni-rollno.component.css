@@ -1,0 +1,23 @@
+.container {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+/* bg image configurations */
+.bg-img{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+}
+.bg-img img{
+    width: 100vw;
+}
+
+.alert {
+    margin-top: 70px;
+    z-index: 100;
+    left: 5vw;
+    right: 5vw;
+    width: 90vw;
+    height: 10vh;
+}

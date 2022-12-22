@@ -1,0 +1,119 @@
+/* .container{
+    margin-top: 6rem;
+} */
+
+
+*:focus{
+    outline: none;
+}
+input:focus{
+    outline: none;
+}
+.homepage-img-row{
+    background: rgba(33, 37, 41);
+}
+
+/* bg image configurations */
+.bg-img{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+}
+.bg-img img{
+    width: 100vw;
+}
+
+.img-homepage {
+    background-image:
+    linear-gradient(to right, rgba(245, 246, 252, 0), rgba(33, 37, 41, 0.100), rgba(33, 37, 41, 0.200), rgba(33, 37, 41, 0.300), rgba(33, 37, 41, 0.400), rgba(33, 37, 41, 0.500) , rgba(33, 37, 41, 0.600), rgba(33, 37, 41, 0.700) , rgba(33, 37, 41, 0.808), rgba(33, 37, 41, 0.87), rgba(33, 37, 41, 0.925), rgba(33, 37, 41)),
+    linear-gradient(45deg, rgba(245, 246, 252, 0), rgba(245, 246, 252, 0), rgba(245, 246, 252, 0), rgb(33, 37, 41)),
+    linear-gradient(90deg, rgba(245, 246, 252, 0), rgba(245, 246, 252, 0), rgb(33, 37, 41)),
+    linear-gradient(180deg, rgba(245, 246, 252, 0), rgb(33, 37, 41)),
+    url('../../../assets/img/homepage.jpg');
+    width: 100vw;
+    height: 130vh;
+    background-size: auto;
+    color: white;
+    padding: 20px;
+}
+
+.quote-sign {
+    font-size: 250px;
+    margin-top: 5rem;
+    /* transform: rotate(0.5turn);
+    transform: scale(1, -1); */
+}
+
+.quote {
+    margin-top: 10rem;
+}
+
+.cta {
+    padding-left: 70px;
+}
+
+/* alumni divider */
+.alumni-list-wave {
+    width: 100vw;
+    height: 200px;
+    overflow-y: hidden;
+}
+
+.alumni-list-wave-img {
+    height: auto;
+    width: 100%;
+}
+
+/* admin action buttons */
+.admin-action {
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+
+.admin-action:hover {
+    border: none;
+    box-shadow: 5px 5px 10px 5px rgba(105, 105, 105, 0.199);
+    transform: scale(1.1);
+}
+.admin-action:active {
+    outline: none;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+    border: 1px solid white;
+    transform: scale(1);
+}
+
+.admin-action-info {
+    border: 1px solid rgb(0, 238, 255);
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+.admin-action-danger {
+    border: 1px solid rgb(255, 30, 0);
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+.admin-action-warning {
+    border: 1px solid rgb(238, 255, 0);
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+
+.alert {
+    margin-top: 70px;
+    z-index: 100;
+    left: 5vw;
+    right: 5vw;
+    width: 90vw;
+    height: 10vh;
+}

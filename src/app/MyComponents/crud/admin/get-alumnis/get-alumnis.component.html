@@ -1,0 +1,45 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<!-- alert message div -->
+<div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
+data-auto-dismiss="2000" role="alert">
+<p class="font-monospace"><strong class="fs-5 me-4">{{alert.head}} :</strong>{{alert.message}}</p>
+<button (click)="closeAlert()" type="button" class="btn-close py-2 px-2 rounded-pill my-3 mx-3"
+    data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="container">
+  <h1 class="text-center font-monospace"><strong>ALUMNI LIST <span class="fs-5">(<i class="bi bi-info-circle me-2 text-info"></i>with admin access)</span></strong></h1>
+  <hr>
+  <table class="table table-dark table-striped table-hover">
+    <thead class="table-info">
+      <tr>
+        <th scope="col">Roll No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Passing Year</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let alumni of alumnis">
+        <th scope="row">{{ alumni.alroll }}</th>
+        <td>{{ alumni.alname }}</td>
+        <td>{{ alumni.alpassyear }}</td>
+        <td>
+          <button (click)="getDetail(alumni.alroll)" type="button"
+            class="btn btn-sm btn-info rounded-pill me-2 px-3 text-white"><i class="bi bi-eye-fill me-2"></i>View</button>
+          <button (click)="updateAlumni(alumni.alroll)" type="button"
+            class="btn btn-sm btn-warning rounded-pill me-2 px-3 text-white"><i class="bi bi-pencil-fill me-2"></i>Edit</button>
+          <button (click)="adDeleteAlumni(alumni.alroll)" type="button"
+            class="btn btn-sm btn-danger rounded-pill me-2 px-3"><i class="bi bi-trash3-fill me-2"></i>Delete</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- empty message displaying -->
+  <div *ngIf="alumnis?.length===0" class="container text-muted text-center fs-4"><strong><i class="bi bi-emoji-frown me-2"></i>Sorry, No alumni records found!</strong>
+  </div>
+</div>

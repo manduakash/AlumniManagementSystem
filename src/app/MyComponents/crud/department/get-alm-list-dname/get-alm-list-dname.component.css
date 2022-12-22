@@ -1,0 +1,14 @@
+.container{
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+/* bg image configurations */
+.bg-img{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+}
+.bg-img img{
+    width: 100vw;
+}

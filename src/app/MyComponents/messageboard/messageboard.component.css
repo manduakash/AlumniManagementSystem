@@ -1,0 +1,15 @@
+.container{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.messages {
+    border-radius: 0px 100px 20px 100px;
+    background: rgb(235, 236, 238);
+    box-shadow: inset 2px 2px 25px 10px rgb(228, 244, 255);
+    box-shadow: 2px 2px 2px 2px rgb(179, 179, 179);
+}
+
+.messages:hover{
+    background: rgb(228, 244, 255);
+}

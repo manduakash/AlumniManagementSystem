@@ -1,0 +1,43 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<!-- alert message div -->
+<div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
+data-auto-dismiss="2000" role="alert">
+<p class="font-monospace"><strong class="fs-5 me-4">{{alert.head}} :</strong>{{alert.message}}</p>
+<button (click)="closeAlert()" type="button" class="btn-close py-2 px-2 rounded-pill my-3 mx-3"
+    data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="container bg-transparent">
+    <div class="card border-info mb-3 mx-auto text-justify col-9 shadow p-1 mb-5 bg-dark rounded">
+        <div class="card-header text-light bg-info border-info text-center font-monospace text-bold h3 py-4">ALUMNI
+            DETAILS</div>
+
+        <div class="alumni-info card-body row">
+            <div class="text-info col-8">
+                <h4 class="card-title my-4 display-5 text-capitalize px-3"><strong>{{alumni.alname}}</strong></h4>
+                <div class="row px-3">
+                    <div class="col-6">
+                        <p class="card-text text-bold"><strong>Roll No: &nbsp; </strong>{{alumni.alroll}}</p>
+                        <p class="card-text text-bold"><strong>E-mail: &nbsp; </strong>{{alumni.alemail}}</p>
+                        <p class="card-text text-bold"><strong>Phone: &nbsp; </strong>{{alumni.alphone}}</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="card-text text-bold"><strong>Passing Year: &nbsp; </strong>{{alumni.alpassyear}}</p>
+                        <p class="card-text text-bold"><strong>Address: &nbsp; </strong>{{alumni.aladdress}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 px-3">
+                <img src="../../../../../assets/img/icons8-student-male-100.png" style="width: 400px; height:250px;"
+                    class="img-fluid rounded img-center me-auto">
+            </div>
+            <div class="card-footer border-info">
+                <button type="button" (click)="updateAlumni(alumni.alroll)" class="btn btn-md btn-warning rounded-pill me-2 px-5 py-2 text-bold text-white text-bold"><i class="bi bi-pencil-fill me-2"></i>Update Alumni</button>
+                <button type="button" (click)="deleteAlumni(alumni.alroll)" class="btn btn-md btn-danger rounded-pill me-2 px-5 py-2 text-bold"><i class="bi bi-trash-fill me-2"></i>Delete Alumni</button>
+            </div>
+        </div>
+    </div>
+</div>

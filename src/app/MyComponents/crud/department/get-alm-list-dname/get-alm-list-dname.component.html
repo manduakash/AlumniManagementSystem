@@ -1,0 +1,34 @@
+<!-- bg image -->
+<div class="bg-img"><img src="../../../assets/img/stacked-waves-haikei.svg"></div>
+
+<div class="container">
+  <h2 class="font-monospace text-center text-muted fw-bolder display-5">ALUMNI LIST BY DEPARTMENT NAME</h2>
+  <div class="underline border border-5 border-bottom border-info w-50 mx-auto"></div>
+  <div class="underline border border-2 border-bottom border-info"></div>
+    <table class="table table-dark table-striped table-hover">
+        <thead class="table-info">
+          <tr>
+            <th scope="col">Roll No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Passing Year</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let alumni of alumnis">
+
+            <th scope="row">{{ alumni.alroll }}</th>
+            <td>{{ alumni.alname }}</td>
+            <td>{{ alumni.alpassyear }}</td>
+            <td>
+                <button type="button" class="btn btn-sm btn-info rounded-pill me-2 px-3 text-white" (click)="getDetail(alumni.alroll)"><strong>View Details</strong></button>
+            </td>
+         </tr>
+
+
+        </tbody>
+      </table>
+      <!-- empty message displaying -->
+      <div *ngIf="alumnis?.length===0" class="container text-muted text-center fs-4"><strong><i class="bi bi-emoji-frown me-2"></i>Sorry, No alumni records found!</strong></div>
+    </div>
