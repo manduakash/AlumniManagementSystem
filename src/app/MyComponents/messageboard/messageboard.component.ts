@@ -14,6 +14,7 @@ export class MessageboardComponent implements OnInit {
 
   discussionforum: Discussionforums = new Discussionforums();
   message: Messages = new Messages();
+  messages: Messages[] = [];
   dfno!: number;
   constructor(private dfService: DiscussionforumsService, private route: ActivatedRoute, private dmService: MessagesService,) { }
 
@@ -26,17 +27,27 @@ export class MessageboardComponent implements OnInit {
       console.log(error);
     });
 
+    this.fetchMessages();
+
   }
 
-// for creating discussion
-// addMessages(){
-//   this.dmService.addMessages(this.discussionforum).subscribe( data=>{
-//     this.discussionforum = data;
-//     this.fetchDiscussions();
-//   }, error=>{
-//     console.log(error);
-//   }
-//   )
-// }
+  fetchMessages(){
+    this.dmService.fetchMessages().subscribe( data => {
+      this.messages = data;
+    }, error => {
+      console.log(error);
+    }
+    );}
+
+  // for creating discussion
+  addMessage(){
+    this.dmService.addMessages(this.message).subscribe( data=>{
+      this.message = data;
+      this.fetchMessages();
+    }, error=>{
+      console.log(error);
+    }
+    )
+  }
 
 }

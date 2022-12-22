@@ -12,11 +12,11 @@ export class MessagesService {
 
    // post method
    addMessages(msgs: Messages): Observable<Messages>{
-    return this.httpClient.post<Messages>(`/messages/addMessages`, msgs);
+    return this.httpClient.post<Messages>(`http://localhost:8080/messages/addMessages`, msgs);
   }
 
   //get method for messages
   fetchMessages(): Observable<Messages[]>{
-    return this.httpClient.get<Messages[]>(`/messages/fetchMessages`);
+    return this.httpClient.get<Messages[]>(`http://localhost:8080/messages/fetchMessages`);
   }
 }

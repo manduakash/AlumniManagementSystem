@@ -18,20 +18,49 @@
         <div class="border border-2 border-bottom border-info w-50 mx-auto"></div>
     </div>
     <!-- create discussions -->
-    <button class="btn btn-outline-info fw-bolder font-monospace fs-9 m-0 py-2 mb-" data-bs-toggle="modal" data-bs-target="#addDiscussion"><i
+    <button class="btn btn-outline-info fw-bolder font-monospace fs-9 m-0 py-2 mb-" data-bs-toggle="modal" data-bs-target="#addMessage"><i
         class="bi bi-plus-circle me-2"></i>REPLY TO THIS DISCUSSION</button>
-    <!-- replies -->
-    <div class="d-flex messages position-relative mt-2 mb-5 px-5 py-3">
-        <div>
-            <h5 class="mt-0"><strong>Random Guy</strong></h5>
-            <p class="font-monospace">This is some placeholder content for the custom component. It is intended to mimic
-                what some real-world content would look like, and we're using it here to give the component a bit of
-                body and size. This is some placeholder content for the custom component. It is intended to mimic
-                what some real-world content would look like, and we're using it here to give the component a bit of
-                body and size.</p>
 
-            <div class="time text-end text-muted font-monospace fs-8">
-                 answered 5 hours ago
+    <!-- create discussions modal -->
+    <div class="modal fade modal-auto-clear" data-bs-timer="1000" id="addMessage" tabindex="-1" aria-labelledby="addMessageLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5 font-monospace" id="addMessageLabel">ADD DISCUSSION</h1>
+            <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form (ngSubmit)="addMessage()">
+                <div class="col-12">
+                <label for="dmName" class="form-label">Your Name</label>
+                <input type="text" class="form-control rounded-pill" id="dmName" placeholder="Enter Your Name Here"
+                    [(ngModel)]="message.name">
+                </div>
+                <div class="col-12">
+                <label for="dfTopic" class="form-label">Message Description</label>
+                <input type="text" class="form-control rounded-pill" id="dfTopic" placeholder="Enter Message Description Here"
+                    [(ngModel)]="message.description">
+                </div>
+
+                <div class="modal-footer mt-3 justify-content-center">
+                <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Reply</button>
+                <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal" ><i class="bi bi-x-circle me-2"></i>Cancel</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- replies -->
+    <div *ngFor="let msg of messages" class="d-flex messages position-relative mt-2 mb-5 px-5 py-3">
+        <div>
+            <h5 class="mt-0"><strong>{{msg.name}}</strong></h5>
+            <p class="font-monospace">{{msg.description}}</p>
+
+            <div class="time text-center text-muted font-monospace fs-8">
+                 answered at {{msg.createdAt}}
             </div>
         </div>
     </div>
