@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Admin } from 'src/app/Model/admin';
 import { Alert } from 'src/app/Model/alert';
 import { Alumni } from 'src/app/Model/alumni';
+import { Notification } from 'src/app/Model/notification';
 import { AdminService } from 'src/app/Service/admin.service';
+import { NotificationService } from 'src/app/Service/notification.service';
 
 @Component({
   selector: 'app-modals',
@@ -12,16 +14,52 @@ import { AdminService } from 'src/app/Service/admin.service';
 })
 export class ModalsComponent implements OnInit {
 
+  notification: Notification = new Notification();
+  notifications: Notification[] = [];
   admin: Admin = new Admin();
   alumni: Alumni = new Alumni();
   alroll!: number;
   alumnis!: Alumni[];
   alert: Alert = new Alert();
   @Output() alertEmit = new EventEmitter<Alert>();
+  @Output() notificationsEmit = new EventEmitter<Notification[]>();
 
-  constructor(private adminService: AdminService, private redirect: Router) { }
+  constructor(private adminService: AdminService, private notificationService: NotificationService, private redirect: Router) { }
 
   ngOnInit(): void {
+  }
+
+  // for adding notification
+  addNotification(){
+    this.notificationService.addNotification(this.notification).subscribe(data=>{
+      this.notification = data;
+      console.log(data);
+      this.notificationService.fetchNotifications().subscribe(data=>{
+        this.notifications = data;
+        this.notificationsEmit.emit(this.notifications);
+      })
+    },
+    error=> {
+      console.log(error);
+    })
+
+    this.adminService.verifyAdmin(this.admin.adusername, this.admin.adpassword).subscribe(data => {
+      this.admin = data;
+      this.alert.isAlert = true;
+      this.alert.type = "success";
+      this.alert.head = "Successfull";
+      this.alert.message = "You have successfully added a notice!";
+      this.alertEmit.emit(this.alert)
+    },
+      error => {
+        console.log(error);
+        this.alert.isAlert = true;
+        this.alert.type = "danger";
+        this.alert.head = "Invalid Credentials";
+        this.alert.message = "Please enter valid admin credentials!";
+        this.alertEmit.emit(this.alert);
+        this.goToHome();
+      });
   }
 
 

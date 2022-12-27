@@ -56,12 +56,12 @@
             <form (ngSubmit)="updateDiscussion(discussionforum.dfno)">
                 <div class="col-12">
                 <label for="dfTopic" class="form-label">Discussion Topic</label>
-                <input type="text" class="form-control rounded-pill" id="dfTopic" placeholder="Enter Discussion Topic Here"
+                <input type="text" class="form-control rounded-pill" id="dfUpdateTopic" placeholder="Enter Discussion Topic Here"
                     [(ngModel)]="discussionforum.topic">
                 </div>
                 <div class="col-12">
                 <label for="dfDescription" class="form-label">Discussion description</label>
-                <input type="text" class="form-control rounded-pill" id="dfDescription" placeholder="Enter Discussion description Here"
+                <input type="text" class="form-control rounded-pill" id="dfUpdateDescription" placeholder="Enter Discussion description Here"
                 [(ngModel)]="discussionforum.description">
                 </div>
 
@@ -93,5 +93,9 @@
             </div>
         </div>
     </div>
+
+    <!-- empty discussions displaying -->
+  <div *ngIf="discussions?.length===0" class="container text-muted text-center fs-4"><strong><i class="bi bi-emoji-frown me-2"></i>Sorry, Nobody asked any question yet!</strong>
+  </div>
 
 </div>

@@ -32,22 +32,17 @@ export class MessageboardComponent implements OnInit {
   }
 
   fetchMessages(){
-    this.dmService.fetchMessages().subscribe( data => {
-      this.messages = data;
-    }, error => {
-      console.log(error);
-    }
-    );}
+    this.messages = this.discussionforum.messages
+  }
 
   // for creating discussion
-  addMessage(){
-    this.dmService.addMessages(this.message).subscribe( data=>{
-      this.message = data;
+  addMessage(message: Messages){
+    this.discussionforum.messages.push(message)
+    this.dfService.addDiscussionforums(this.discussionforum).subscribe( data => {
+      this.discussionforum = data;
+      this.discussionforum.messages = data.messages;
       this.fetchMessages();
-    }, error=>{
-      console.log(error);
-    }
-    )
+    })
   }
 
 }

@@ -15,6 +15,10 @@
     font-size: 15px;
 }
 
+.notification{
+    overflow-y: scroll;
+}
+
 .copyright {
     text-align: center;
 }

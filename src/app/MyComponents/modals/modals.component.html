@@ -1,5 +1,45 @@
 <!-- modal activating settings -->
-<!-- data-bs-toggle="modal" data-bs-target="#onGetAlumnis" -->
+<!-- data-bs-toggle="modal" data-bs-target="#addNotice" -->
+
+<!-- add notice -->
+<div class="modal fade modal-auto-clear" id="addNotice" tabindex="-1" aria-labelledby="addNoticeLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 font-monospace" id="addNoticeLabel">ADD NOTICE</h1>
+        <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="addNotification()">
+          <div class="col-12">
+            <label for="noticeadusername" class="form-label">Admin Username</label>
+            <input type="text" class="form-control rounded-pill rounded-pill" id="noticeadusername" placeholder="Enter Username here"
+              [(ngModel)]="admin.adusername">
+          </div>
+          <div class="col-12">
+            <label for="noticeadpassword" class="form-label">Admin Password</label>
+            <input type="password" class="form-control rounded-pill rounded-pill" id="noticeadpassword" placeholder="Enter Password here"
+            [(ngModel)]="admin.adpassword">
+          </div>
+          <div class="col-12">
+            <label for="noticeheading" class="form-label">Notice Heading</label>
+            <input type="text" class="form-control rounded-pill rounded-pill" id="noticeheading" placeholder="Enter Notice Heading here"
+            [(ngModel)]="notification.heading">
+          </div>
+          <div class="col-12">
+            <label for="noticedescription" class="form-label">Notice Description</label>
+            <input type="text" class="form-control rounded-pill rounded-pill" id="noticedescription" placeholder="Enter Notice Description here"
+            [(ngModel)]="notification.description">
+          </div>
+          <div class="modal-footer mt-3 justify-content-center">
+            <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Add Notice</button>
+            <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- onGetAlumnis -->
 <div class="modal fade modal-auto-clear" id="onGetAlumnis" tabindex="-1" aria-labelledby="onGetAlumnisLabel" aria-hidden="true">

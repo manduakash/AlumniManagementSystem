@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Discussionforums } from '../Model/discussionforums';
+import { Messages } from '../Model/messages';
 
 @Injectable({
   providedIn: 'root'
@@ -34,4 +35,5 @@ export class DiscussionforumsService {
   deleteDiscussion(dfno: number): Observable<object>{
     return this.httpClient.delete<object>(`http://localhost:8080/discussionforums/deleteDiscussion/${dfno}`);
   }
+
 }
