@@ -3,6 +3,16 @@
     margin-bottom: 80px;
 }
 
+/* bg image configurations */
+.bg-img{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+}
+.bg-img img{
+    width: 100vw;
+}
+
 .btn-action {
     margin-left: 3rem;
     margin-bottom: 3rem;

@@ -83,7 +83,7 @@
         </li>
 
         <li class="nav-item dropdown me-1">
-          <a class="nav-link btn my-auto" data-bs-toggle="offcanvas" href="#notification" role="button" aria-controls="notification">Notification <i class="bi bi-bell-fill"></i> <span class="badge bg-danger rounded-pill fs-7 px-1 py-1 my-auto">new</span></a>
+          <a class="nav-link btn my-auto" data-bs-toggle="offcanvas" href="#notification" role="button" aria-controls="notification">Notification <span class="badge bg-danger rounded-pill fs-7 px-1 py-1 my-auto">new</span></a>
         </li>
 
       </ul>
@@ -103,6 +103,7 @@
     <hr>
       <a href="#" class="text-decoration-none text-white"><p class="text-justify fs-7 font-monospace"><strong>{{ notification.heading }}: </strong>{{ notification.description }}</p></a>
       <div class="time text-muted text-end">at {{notification.createdAt}} </div><hr>
+      <div *ngIf="notifications?.length===0" class="time text-muted text-end"> There is no new notifications. </div><hr>
     </div>
   </div>
 </div>
