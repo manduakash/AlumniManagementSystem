@@ -51,18 +51,18 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onGetAlumnis()">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill rounded-pill" id="adusername" placeholder="Enter Username here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill rounded-pill" id="adpassword" placeholder="Enter Password here"
             [(ngModel)]="admin.adpassword">
           </div>
           <div class="modal-footer mt-3 justify-content-center">
-            <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal"><i class="bi bi-person-fill-lock me-2"></i>Login</button>
+            <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Get Alumnis</button>
             <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Cancel</button>
           </div>
         </form>
@@ -81,12 +81,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onGetDepartments()">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameDepts" placeholder="Enter Username Here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill" id="adpasswordDepts" placeholder="Enter Password Here"
             [(ngModel)]="admin.adpassword">
@@ -111,12 +111,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onDeleteAdmin(admin.adusername)">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameDeleteAdmin" placeholder="Enter Username Here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill" id="adpasswordDeleteAdmin" placeholder="Enter Password Here"
             [(ngModel)]="admin.adpassword">
@@ -193,12 +193,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="getAlumniByRoll4Admin(alumni.alroll)">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameGetAlumni" placeholder="Enter Username Here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill" id="adpasswordGetAlumni" placeholder="Enter Password Here"
             [(ngModel)]="admin.adpassword">
@@ -229,12 +229,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="updateAlumniByRoll4Admin(alumni.alroll)">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameUpdateAlumni" placeholder="Enter Username Here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill" id="adpasswordUpdateAlumni" placeholder="Enter Password Here"
             [(ngModel)]="admin.adpassword">
@@ -265,12 +265,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="deleteAlumniByRoll4Admin(alumni.alroll)">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameDeleteAlumni" placeholder="Enter Username Here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="adpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill" id="adpasswordDeleteAlumni" placeholder="Enter Password Here"
             [(ngModel)]="admin.adpassword">

@@ -42,6 +42,11 @@ export class AdminService {
     return this.httpClient.get<Admin>(`${this.baseURL}/verifyAdmin?adusername=${adusername}&adpassword=${adpassword}`);
   }
 
+  //login admin
+  loginAdmin(adusername: string, adpassword: string): Observable<Admin>{
+    return this.httpClient.get<Admin>(`http://localhost:8080/login/loginAdmin?adusername=${adusername}&adpassword=${adpassword}`);
+  }
+
   //update alumni
   updateAlumni(alroll: number, alumni: Alumni): Observable<Alumni>{
     return this.httpClient.put<Alumni>(`${this.baseURL}/updateAlumni/${alroll}`, alumni);

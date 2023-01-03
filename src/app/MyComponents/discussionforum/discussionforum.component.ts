@@ -33,7 +33,10 @@ export class DiscussionforumComponent implements OnInit {
   // for creating discussion
   addDiscussion(){
     this.dfService.addDiscussionforums(this.discussionforum).subscribe( data=>{
-      this.discussionforum = data;
+      this.discussionforum.topic = ""
+      this.discussionforum.description = ""
+      this.discussionforum.createdBy = ""
+      
       this.fetchDiscussions();
     }, error=>{
       console.log(error);

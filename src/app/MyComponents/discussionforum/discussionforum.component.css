@@ -35,7 +35,29 @@
     transform: scale(1);
 }
 
+/* for the bg-grad animation */
+@keyframes gradient {
+    0%     {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214));}
+    10%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgba(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5));}
+    20%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    30%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    40%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644) , rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    50%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    60%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    70%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    80%    {background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    90%    {background-image: linear-gradient(to right, rgb(50, 247, 214, 0.644), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5));}
+    100%   {background-image: linear-gradient(to bottom left, rgb(73, 112, 240, 0.5, 0.5), rgb(73, 112, 240, 0.5, 0.5), rgb(50, 247, 214));}
+}
+
+.forum{
+    background-image: linear-gradient(to right, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214));
+    transition-duration: 500ms;
+    color: rgb(245, 245, 245);
+}
+
 .forum:hover{
     transform: scale(1.03);
-    background: rgb(228, 244, 255);
+    background-image: linear-gradient(to bottom left, rgb(73, 112, 240, 0.5), rgb(73, 112, 240, 0.5), rgb(50, 247, 214));
+    animation: gradient 300ms ease-in-out forwards;
 }

@@ -6,6 +6,7 @@ import { Alumni } from 'src/app/Model/alumni';
 import { Notification } from 'src/app/Model/notification';
 import { AdminService } from 'src/app/Service/admin.service';
 import { NotificationService } from 'src/app/Service/notification.service';
+import { Cookie } from "ng2-cookies/ng2-cookies";
 
 @Component({
   selector: 'app-modals',
@@ -18,15 +19,24 @@ export class ModalsComponent implements OnInit {
   notifications: Notification[] = [];
   admin: Admin = new Admin();
   alumni: Alumni = new Alumni();
+  alert: Alert = new Alert();
   alroll!: number;
   alumnis!: Alumni[];
-  alert: Alert = new Alert();
+  loginrole!: string;
   @Output() alertEmit = new EventEmitter<Alert>();
   @Output() notificationsEmit = new EventEmitter<Notification[]>();
+  @Output() loginroleEmit = new EventEmitter<string>();
+  @Input() role = this.loginrole;
 
   constructor(private adminService: AdminService, private notificationService: NotificationService, private redirect: Router) { }
 
   ngOnInit(): void {
+    this.loginrole = Cookie.get("loginrole")
+    this.notificationService.fetchNotifications().subscribe(data=>{
+      this.notifications = data;
+      this.notificationsEmit.emit(this.notifications);
+      this.loginroleEmit.emit(this.loginrole);
+    })
   }
 
   // for adding notification
@@ -50,6 +60,8 @@ export class ModalsComponent implements OnInit {
       this.alert.head = "Successfull";
       this.alert.message = "You have successfully added a notice!";
       this.alertEmit.emit(this.alert)
+      this.loginrole = "admin"
+      Cookie.set("loginrole",this.loginrole);
     },
       error => {
         console.log(error);
@@ -89,6 +101,9 @@ export class ModalsComponent implements OnInit {
       this.alert.head = "Successfull";
       this.alert.message = "You have successfully logged in as a Admin!";
       this.alertEmit.emit(this.alert)
+      this.loginrole = "admin"
+      Cookie.set('loginrole','admin')
+      this.loginroleEmit.emit(this.loginrole)
     },
       error => {
         console.log(error);
@@ -103,37 +118,34 @@ export class ModalsComponent implements OnInit {
   //-------------------------------------------
   // for admin
   onGetAlumnis() {
-    this.verifyingAdmin();
+    if(this.loginrole!="admin"){
+      this.verifyingAdmin();
+    }
     this.goToGetAlumnis();
   }
   //-------------------------------------------
   // for admin
   onGetDepartments() {
-    this.verifyingAdmin();
+    if(this.loginrole!="admin"){
+      this.verifyingAdmin();
+    }
     this.goToGetDepartments();
   }
   //-------------------------------------------
   // for admin
   onUpdateAdmin() {
-    this.verifyingAdmin();
+    if(this.loginrole!="admin"){
+      this.verifyingAdmin();
+    }
     this.goToGetAlumnis();
   }
   //-------------------------------------------
   // for admin
   onDeleteAdmin(username: string) {
     // verifying admin credentials
-    this.adminService.verifyAdmin(this.admin.adusername, this.admin.adpassword).subscribe(data => {
-      this.admin = data;
-    },
-      error => {
-        console.log(error)
-        this.alert.isAlert = true;
-        this.alert.type = "danger";
-        this.alert.head = "Invalid Credentials";
-        this.alert.message = "Please enter valid username and password!";
-        this.alertEmit.emit(this.alert)
-        this.goToHome();
-      });
+    if(this.loginrole!="admin"){
+      this.verifyingAdmin();
+    };
     this.adminService.deleteAdmin(username).subscribe(data => {
       this.alert.isAlert = true;
       this.alert.type = "success";
@@ -141,7 +153,7 @@ export class ModalsComponent implements OnInit {
       this.alert.message = "You have successfully deactivated the admin account!";
       // redirecting to homepage with alert object
       this.redirect.navigate(['homepage'], {
-      queryParams: { data: btoa(JSON.stringify(this.alert)) }
+        queryParams: { data: btoa(JSON.stringify(this.alert)) }
       });
     },
       error => {
@@ -152,8 +164,9 @@ export class ModalsComponent implements OnInit {
         // redirecting to homepage with alert object
       this.redirect.navigate(['homepage'], {
         queryParams: { data: btoa(JSON.stringify(this.alert)) }
-        });
       });
+    });
+    this.goToHome();
   }
 
   //-------------------------------------------
@@ -179,7 +192,9 @@ export class ModalsComponent implements OnInit {
 
   // for admin
   getAlumniByRoll4Admin(alroll: number) {
-    this.verifyingAdmin();
+    if(this.loginrole!="admin"){
+      this.verifyingAdmin();
+    };
     this.redirect.navigate(['admin/get-alumni-rollno', alroll], {
       queryParams: { data: btoa(JSON.stringify(this.alert)) }
     });
@@ -187,7 +202,9 @@ export class ModalsComponent implements OnInit {
 
   // for admin
   updateAlumniByRoll4Admin(alroll: number) {
-    this.verifyingAdmin();
+    if(this.loginrole!="admin"){
+      this.verifyingAdmin();
+    };
     this.redirect.navigate(['admin/update-alumni', alroll], {
       queryParams: { data: btoa(JSON.stringify(this.alert)) }
     });
@@ -195,29 +212,30 @@ export class ModalsComponent implements OnInit {
 
   // for admin
   deleteAlumniByRoll4Admin(alroll: number) {
-    // this.verifyingAdmin();
     // verifying admin credentials
-    this.adminService.verifyAdmin(this.admin.adusername, this.admin.adpassword).subscribe(data => {
-      this.admin = data;
-      this.alert.isAlert = true;
-      this.alert.type = "success";
-      this.alert.head = "Successfull";
-      this.alert.message = "You have successfully deleted the alumni!";
-      this.redirect.navigate(['homepage'], {
-        queryParams: { data: btoa(JSON.stringify(this.alert)) }
-      });
-    },
-      error => {
-        console.log(error)
+    if(this.loginrole!="admin"){
+      this.adminService.verifyAdmin(this.admin.adusername, this.admin.adpassword).subscribe(data => {
+        this.admin = data;
         this.alert.isAlert = true;
-        this.alert.type = "danger";
-        this.alert.head = "Invalid Credentials";
-        this.alert.message = "Please enter valid username and password!";
+        this.alert.type = "success";
+        this.alert.head = "Successfull";
         this.alert.message = "You have successfully deleted the alumni!";
         this.redirect.navigate(['homepage'], {
           queryParams: { data: btoa(JSON.stringify(this.alert)) }
         });
-      });
+      },
+        error => {
+          console.log(error)
+          this.alert.isAlert = true;
+          this.alert.type = "danger";
+          this.alert.head = "Invalid Credentials";
+          this.alert.message = "Please enter valid username and password!";
+          this.alert.message = "You have successfully deleted the alumni!";
+          this.redirect.navigate(['homepage'], {
+            queryParams: { data: btoa(JSON.stringify(this.alert)) }
+          })
+        })
+    };
 
     // verifying and deleting alumni
     this.adminService.deleteAlumni(alroll).subscribe(data => {

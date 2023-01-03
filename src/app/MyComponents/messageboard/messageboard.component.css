@@ -14,7 +14,7 @@
 }
 
 .messages {
-    border-radius: 0px 100px 20px 100px;
+    border-radius: 0px 80px 20px 50px;
     background: rgb(235, 236, 238);
     box-shadow: inset 2px 2px 25px 10px rgb(228, 244, 255);
     box-shadow: 2px 2px 2px 2px rgb(179, 179, 179);
@@ -22,4 +22,8 @@
 
 .messages:hover{
     background: rgb(228, 244, 255);
+}
+
+.forum{
+    background-image: linear-gradient(to bottom, rgba(73, 112, 240, 0.5), rgba(73, 112, 240, 0.5), rgb(50, 247, 214));
 }

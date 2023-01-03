@@ -1,0 +1,48 @@
+<div class="container login-container">
+    <!-- alert message div -->
+    <div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
+        data-auto-dismiss="2000" role="alert">
+        <p class="font-monospace"><strong class="fs-5 me-4">{{alert.head}} :</strong>{{alert.message}}</p>
+        <button (click)="closeAlert()" type="button" class="btn-close py-2 px-2 rounded-pill my-3 mx-3"
+            data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Login as Alumni</h3>
+            <form>
+                <div class="form-group my-2">
+                    <input type="text" class="form-control" placeholder="Your Username" value="" />
+                </div>
+                <div class="form-group my-2">
+                    <input type="password" class="form-control" placeholder="Your Password" value="" />
+                </div>
+                <div class="form-group mt-4">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Forget Password?</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+            <h3>Login as Admin</h3>
+            <form (ngSubmit)="loginAdmin()">
+                <div class="form-group my-2">
+                    <input [(ngModel)]="admin.adusername" type="text" class="form-control" placeholder="Your Username"
+                        value="" />
+                </div>
+                <div class="form-group my-2">
+                    <input [(ngModel)]="admin.adpassword" type="password" class="form-control"
+                        placeholder="Your Password" value="" />
+                </div>
+                <div class="form-group mt-4">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+
+                    <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

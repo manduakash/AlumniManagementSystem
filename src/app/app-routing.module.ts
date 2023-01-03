@@ -14,10 +14,12 @@ import { UpdateAlumniComponent } from './MyComponents/crud/admin/update-alumni/u
 import { GetAlmListDnameComponent } from './MyComponents/crud/department/get-alm-list-dname/get-alm-list-dname.component';
 import { DiscussionforumComponent } from './MyComponents/discussionforum/discussionforum.component';
 import { MessageboardComponent } from './MyComponents/messageboard/messageboard.component';
+import { LoginComponent } from './MyComponents/login/login.component';
 
 const routes: Routes = [
   {path: 'homepage', component: HomepageComponent},
   {path: '', redirectTo: 'homepage', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
 
   //admin paths
   {path: 'admin/create-admin', component: CreateAdminComponent},

@@ -23,6 +23,8 @@ export class MessageboardComponent implements OnInit {
     this.dfService.fetchDiscussion(this.dfno).subscribe( data => {
       console.log(data);
       this.discussionforum = data;
+      this.discussionforum.messages = data.messages;
+      this.messages = this.discussionforum.messages
     }, error => {
       console.log(error);
     });
@@ -41,6 +43,8 @@ export class MessageboardComponent implements OnInit {
     this.dfService.addDiscussionforums(this.discussionforum).subscribe( data => {
       this.discussionforum = data;
       this.discussionforum.messages = data.messages;
+      this.message.name = "";
+      this.message.description = "";
       this.fetchMessages();
     })
   }

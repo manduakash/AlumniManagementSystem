@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { Alert } from 'src/app/Model/alert';
 import { Alumni } from 'src/app/Model/alumni';
 import { Notification } from 'src/app/Model/notification';
@@ -14,7 +15,9 @@ import { NotificationService } from 'src/app/Service/notification.service';
 export class HomepageComponent implements OnInit {
 
   notifications: Notification[] = [];
+  loginrole!: string;
   @Output() notificationsEmit = new EventEmitter<Notification[]>();
+  @Output() loginroleEmit = new EventEmitter<string>();
   alroll!: number;
   alumnis!: Alumni[]
   alumni: Alumni = new Alumni();
@@ -24,21 +27,25 @@ export class HomepageComponent implements OnInit {
 
   closeAlert(){
     this.isAlert = false;
+    this.alert.type = "";
+    this.alert.head = "";
+    this.alert.message = "";
+    this.redirect.navigate(['homepage']);
   }
 
-  constructor(private notificationService: NotificationService, private alumniService: AlumniService, private route: ActivatedRoute, private redirect: Router) { }
+  constructor(private notificationService: NotificationService, private alumniService: AlumniService, private route: ActivatedRoute, private redirect: Router) {
+    // this.redirect.routeReuseStrategy.shouldReuseRoute = ()=> false;
+  }
 
   ngOnInit(): void {
+    this.loginroleEmit.emit(this.loginrole);
     this.fetchNotifications();
     // fetching datas from url
     this.route.queryParams.subscribe( (params) => {
       this.alert = JSON.parse(atob(params['data']))
       console.log(this.alert);
       this.isAlert = this.alert.isAlert;
-      // for auto alert closing
-      setTimeout(() => {
-        this.isAlert = false;
-      }, 5000);
+
     });
   }
 

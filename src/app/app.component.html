@@ -44,7 +44,7 @@
 
         <li class="nav-item dropdown me-1">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            D-Tech Zone Department
+            D-Tech Zone
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="department/create-department">Add Department</a></li>
@@ -86,6 +86,11 @@
           <a class="nav-link btn my-auto" data-bs-toggle="offcanvas" href="#notification" role="button" aria-controls="notification">Notification <span class="badge bg-danger rounded-pill fs-7 px-1 py-1 my-auto">new</span></a>
         </li>
 
+        <li class="nav-item me-1">
+          <button *ngIf=" !(loginrole == 'admin' || loginrole == 'alumni') " class="btn btn-sm btn-outline-info my-1 px-3 rounded-pill" routerLink="login">Login</button>
+          <button *ngIf="loginrole == 'admin'" (click)="logout()" class="btn btn-sm btn-danger my-1 px-2 rounded-pill">Logout Admin</button>
+          <button *ngIf="loginrole == 'alumni'" (click)="logout()" class="btn btn-sm btn-danger my-1 px-2 rounded-pill">Logout Alumni</button>
+        </li>
       </ul>
 
     </div>
@@ -99,16 +104,19 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
+    <div *ngIf="notifications?.length===0" class="time text-muted text-center"> There is no new notification. </div>
     <div *ngFor="let notification of notifications">
     <hr>
       <a href="#" class="text-decoration-none text-white"><p class="text-justify fs-7 font-monospace"><strong>{{ notification.heading }}: </strong>{{ notification.description }}</p></a>
-      <div class="time text-muted text-end">at {{notification.createdAt}} </div><hr>
-      <div *ngIf="notifications?.length===0" class="time text-muted text-end"> There is no new notifications. </div><hr>
+      <div class="time text-muted text-end">at {{notification.createdAt}} </div>
     </div>
   </div>
 </div>
 <!-- <app-homepage (alertHomeEmit)="alertHomeEmit($event)"></app-homepage> -->
-<app-modals (alertEmit)="alertEmit($event)" (notificationsEmit)="notificationsEmit($event)"></app-modals>
+<app-modals [role]="loginrole" (alertEmit)="alertEmit($event)" (notificationsEmit)="notificationsEmit($event)" (loginroleEmit)="loginroleEmit($event)"></app-modals>
+<app-login *ngIf="1<0" (roleEmit)="roleEmit($event)"></app-login>
+<app-homepage *ngIf="1<0" (loginroleEmit)="loginroleEmit($event)"></app-homepage>
+
 <!-- alert message div -->
 <div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"
   data-auto-dismiss="2000" role="alert">

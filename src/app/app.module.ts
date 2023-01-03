@@ -20,6 +20,7 @@ import { GetAlmListDnameComponent } from './MyComponents/crud/department/get-alm
 import { NgIf } from '@angular/common';
 import { DiscussionforumComponent } from './MyComponents/discussionforum/discussionforum.component';
 import { MessageboardComponent } from './MyComponents/messageboard/messageboard.component';
+import { LoginComponent } from './MyComponents/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MessageboardComponent } from './MyComponents/messageboard/messageboard.
     UpdateAlumniComponent,
     GetAlmListDnameComponent,
     DiscussionforumComponent,
-    MessageboardComponent
+    MessageboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
