@@ -11,12 +11,12 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="addNotification()">
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="noticeadusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill rounded-pill" id="noticeadusername" placeholder="Enter Username here"
               [(ngModel)]="admin.adusername">
           </div>
-          <div class="col-12">
+          <div class="col-12" *ngIf="role!='admin'">
             <label for="noticeadpassword" class="form-label">Admin Password</label>
             <input type="password" class="form-control rounded-pill rounded-pill" id="noticeadpassword" placeholder="Enter Password here"
             [(ngModel)]="admin.adpassword">
@@ -41,16 +41,19 @@
   </div>
 </div>
 
-<!-- onGetAlumnis -->
-<div class="modal fade modal-auto-clear" id="onGetAlumnis" tabindex="-1" aria-labelledby="onGetAlumnisLabel" aria-hidden="true">
+<!-- onGetAlumnisAdmin -->
+<div class="modal fade modal-auto-clear" id="onGetAlumnisAdmin" tabindex="-1" aria-labelledby="onGetAlumnisAdminLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-dark text-white">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 font-monospace" id="onGetAlumnisLabel">ADMIN LOGIN</h1>
+        <h1 class="modal-title fs-5 font-monospace" id="onGetAlumnisAdminLabel">ADMIN LOGIN</h1>
         <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="onGetAlumnis()">
+        <form (ngSubmit)="onGetAlumnisAdmin()">
+          <div class="col-12" *ngIf="role == 'admin'">
+            You're already logged in as an admin.
+          </div>
           <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill rounded-pill" id="adusername" placeholder="Enter Username here"
@@ -81,6 +84,9 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onGetDepartments()">
+          <div class="col-12" *ngIf="role == 'admin'">
+            You're already logged in as an admin.
+          </div>
           <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameDepts" placeholder="Enter Username Here"
@@ -92,7 +98,7 @@
             [(ngModel)]="admin.adpassword">
           </div>
           <div class="modal-footer mt-3 justify-content-center">
-            <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal"><i class="bi bi-person-fill-lock me-2"></i>Login</button>
+            <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Get Departments</button>
             <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal" ><i class="bi bi-x-circle me-2"></i>Cancel</button>
           </div>
         </form>
@@ -111,6 +117,9 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onDeleteAdmin(admin.adusername)">
+          <div class="col-12" *ngIf="role == 'admin'">
+            You're already logged in as an admin.
+          </div>
           <div class="col-12" *ngIf="role!='admin'">
             <label for="adusername" class="form-label">Admin Username</label>
             <input type="text" class="form-control rounded-pill" id="adusernameDeleteAdmin" placeholder="Enter Username Here"
@@ -131,6 +140,39 @@
   </div>
 </div>
 
+<!-- onGetAlumnis -->
+<div class="modal fade modal-auto-clear" id="onGetAlumnis" tabindex="-1" aria-labelledby="onGetAlumnisLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 font-monospace" id="onGetAlumnisLabel">ADMIN LOGIN</h1>
+        <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onGetAlumnis()">
+          <div class="col-12" *ngIf="role == 'alumni'">
+            You're already logged in as an alumni. <br>
+          </div>
+          <div class="col-12" *ngIf="role!='alumni'">
+            <label class="form-label">Alumni Roll Number</label>
+            <input type="text" class="form-control rounded-pill rounded-pill" placeholder="Enter roll no. here"
+              [(ngModel)]="alumni.alroll">
+          </div>
+          <div class="col-12" *ngIf="role!='alumni'">
+            <label class="form-label">Alumni Password</label>
+            <input type="password" class="form-control rounded-pill rounded-pill" placeholder="Enter Password here"
+            [(ngModel)]="alumni.alpassword">
+          </div>
+          <div class="modal-footer mt-3 justify-content-center">
+            <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Get Alumnis</button>
+            <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- getAlumniByRoll -->
 <div class="modal fade modal-auto-clear" data-bs-timer="1000" id="getAlumniByRoll" tabindex="-1" aria-labelledby="getAlumniByRoll" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -141,6 +183,21 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="getAlumniByRoll(alumni.alroll)">
+          <div class="col-12" *ngIf="role == 'alumni'">
+            You're already logged in as an alumni. <br>
+          </div>
+
+          <div class="col-12" *ngIf="role!='alumni'">
+            <label class="form-label">Alumni Roll number</label>
+            <input type="text" class="form-control rounded-pill" placeholder="Enter Roll no. Here"
+              [(ngModel)]="alumni.alroll">
+          </div>
+          <div class="col-12" *ngIf="role!='alumni'">
+            <label class="form-label">Alumni Password</label>
+            <input type="password" class="form-control rounded-pill" placeholder="Enter Password Here"
+            [(ngModel)]="alumni.alpassword">
+          </div>
+
           <div class="col-12">
             <label for="almGetAlroll" class="form-label">Alumni Roll Number</label>
             <input type="text" class="form-control rounded-pill" id="almGetAlroll" placeholder="Enter Roll Number Here"

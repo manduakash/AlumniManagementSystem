@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Discussionforums } from 'src/app/Model/discussionforums';
 import { DiscussionforumsService } from 'src/app/Service/discussionforums.service';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
   selector: 'app-discussionforum',
@@ -11,11 +12,15 @@ import { DiscussionforumsService } from 'src/app/Service/discussionforums.servic
 export class DiscussionforumComponent implements OnInit {
 
   discussions!: Discussionforums[];
+  loginrole!: string;
+  @Input() role = this.loginrole;
   discussionforum: Discussionforums = new Discussionforums();
   constructor(private dfService: DiscussionforumsService, private redirect: Router) { }
 
   ngOnInit(): void {
     this.fetchDiscussions();
+    this.role = this.loginrole;
+    this.loginrole = Cookie.get("loginrole");
   }
 
   fetchDiscussions(){
@@ -36,7 +41,7 @@ export class DiscussionforumComponent implements OnInit {
       this.discussionforum.topic = ""
       this.discussionforum.description = ""
       this.discussionforum.createdBy = ""
-      
+
       this.fetchDiscussions();
     }, error=>{
       console.log(error);

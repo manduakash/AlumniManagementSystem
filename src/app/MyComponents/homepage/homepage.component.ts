@@ -38,14 +38,17 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginroleEmit.emit(this.loginrole);
+    this.loginroleEmit.emit(Cookie.get("loginrole"));
     this.fetchNotifications();
     // fetching datas from url
     this.route.queryParams.subscribe( (params) => {
       this.alert = JSON.parse(atob(params['data']))
       console.log(this.alert);
       this.isAlert = this.alert.isAlert;
-
+      if(JSON.parse(atob(params['data'])) == 'admin' || 'alumni' || '') {
+        this.loginroleEmit.emit(Cookie.get("loginrole"));
+        this.loginrole = Cookie.get('loginrole');
+      }
     });
   }
 

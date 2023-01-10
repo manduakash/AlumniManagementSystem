@@ -5,6 +5,7 @@ import { Admin } from 'src/app/Model/admin';
 import { Alert } from 'src/app/Model/alert';
 import { Alumni } from 'src/app/Model/alumni';
 import { AdminService } from 'src/app/Service/admin.service';
+import { AlumniService } from 'src/app/Service/alumni.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.redirect.navigate(['login']);
   }
 
-  constructor(private adminService: AdminService, private redirect: Router, private route: ActivatedRoute) {
+  constructor(private adminService: AdminService, private alumniService: AlumniService, private redirect: Router, private route: ActivatedRoute) {
 
   }
 
@@ -58,10 +59,10 @@ export class LoginComponent implements OnInit {
       this.alert.message = "You have successfully logged in as a Admin!";
       this.loginrole = "admin"
       Cookie.set('loginrole','admin')
-      this.roleEmit.emit(Cookie.get('loginrole'));
+      this.roleEmit.emit("admin");
        // redirecting to homepage with alert object
        this.redirect.navigate(['homepage'], {
-        queryParams: { data: btoa(JSON.stringify(this.alert))}
+        queryParams: { data: btoa(JSON.stringify(this.alert)), data2: btoa(JSON.stringify(this.loginrole))}
       });
     },
       error => {
@@ -70,9 +71,42 @@ export class LoginComponent implements OnInit {
         this.alert.type = "danger";
         this.alert.head = "Invalid Credentials";
         this.alert.message = "Please enter valid username and password!";
+        this.loginrole = ""
+        Cookie.set('loginrole','')
         // redirecting to homepage with alert object
         this.redirect.navigate(['login'], {
-         queryParams: { data: btoa(JSON.stringify(this.alert)) }
+         queryParams: { data: btoa(JSON.stringify(this.alert)), data2: btoa(JSON.stringify(this.loginrole)) }
+        });
+      });
+  }
+
+   // validation of alumni
+   loginAlumni() {
+    this.alumniService.loginAlumni(this.alumni.alroll, this.alumni.alpassword).subscribe(data => {
+      this.alumni = data;
+      this.alert.isAlert = true;
+      this.alert.type = "success";
+      this.alert.head = "Successfull";
+      this.alert.message = "You have successfully logged in as a Alumni!";
+      this.loginrole = "alumni"
+      Cookie.set('loginrole','alumni')
+      this.roleEmit.emit("alumni");
+       // redirecting to homepage with alert object
+       this.redirect.navigate(['homepage'], {
+        queryParams: { data: btoa(JSON.stringify(this.alert)), data2: btoa(JSON.stringify(this.loginrole))}
+      });
+    },
+      error => {
+        console.log(error);
+        this.alert.isAlert = true;
+        this.alert.type = "danger";
+        this.alert.head = "Invalid Credentials";
+        this.alert.message = "Please enter valid username and password!";
+        this.loginrole = ""
+        Cookie.set('loginrole','')
+        // redirecting to homepage with alert object
+        this.redirect.navigate(['login'], {
+         queryParams: { data: btoa(JSON.stringify(this.alert)), data2: btoa(JSON.stringify(this.loginrole))}
         });
       });
   }

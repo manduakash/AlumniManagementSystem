@@ -38,6 +38,15 @@ data-auto-dismiss="2000" role="alert">
         </div>
 
         <div class="row mb-3 form-group my-3 col-10 mx-auto">
+            <label class="col-sm-4 col-form-label"><i class="bi bi-person-fill-lock mx-2"></i>
+                Password</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control font-monospace rounded-pill" name="alpassword"
+                    [(ngModel)]="alumni.alpassword" placeholder="Enter Alumni password">
+            </div>
+        </div>
+
+        <div class="row mb-3 form-group my-3 col-10 mx-auto">
             <label for="aladdress" class="col-sm-4 col-form-label"><i class="bi bi-geo-alt-fill mx-2"></i>
                 Address</label>
             <div class="col-sm-8">

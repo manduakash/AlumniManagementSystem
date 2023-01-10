@@ -30,4 +30,14 @@ export class AlumniService {
     return this.httpClient.get<Alumni>(`${this.baseURL}/getAlumni/${alroll}`)
   }
 
+    //get method for verifying Alumni
+    verifyAlumni(alroll: number, alpassword: string): Observable<Alumni>{
+      return this.httpClient.get<Alumni>(`${this.baseURL}/verifyAlumni?alroll=${alroll}&alpassword=${alpassword}`);
+    }
+
+    //login Alumni
+    loginAlumni(alroll: number, alpassword: string): Observable<Alumni>{
+      return this.httpClient.get<Alumni>(`http://localhost:8080/login/loginAlumni?alroll=${alroll}&alpassword=${alpassword}`);
+    }
+
 }

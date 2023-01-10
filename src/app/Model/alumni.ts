@@ -8,6 +8,7 @@ export class Alumni {
     aladdress!: string
     alphone!: number
     alpassyear!: number
+    alpassword!: string
     department : Department = new Department();
 
 }

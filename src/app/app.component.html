@@ -34,7 +34,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="/alumni/create-alumni">Add Alumni</a></li>
-            <li><a class="dropdown-item" routerLink="alumni/alm-get-alumnis">Get Alumnis List
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#onGetAlumnis">Get Alumnis List
               </a></li>
             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#getAlumniByRoll">Get Alumni by Roll
                 no.</a></li>
@@ -62,7 +62,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="admin/create-admin">Add Admin</a></li>
-            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#onGetAlumnis">Get Alumni List</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#onGetAlumnisAdmin">Get Alumni List</a></li>
             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#onGetDepartments">Get Department
                 list</a></li>
             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#getAlumniByRoll4Admin">Get Alumni By
@@ -114,8 +114,9 @@
 </div>
 <!-- <app-homepage (alertHomeEmit)="alertHomeEmit($event)"></app-homepage> -->
 <app-modals [role]="loginrole" (alertEmit)="alertEmit($event)" (notificationsEmit)="notificationsEmit($event)" (loginroleEmit)="loginroleEmit($event)"></app-modals>
-<app-login *ngIf="1<0" (roleEmit)="roleEmit($event)"></app-login>
-<app-homepage *ngIf="1<0" (loginroleEmit)="loginroleEmit($event)"></app-homepage>
+<app-login (roleEmit)="roleEmit($event)" class="d-none"></app-login>
+<app-homepage class="d-none" (loginroleEmit)="loginroleEmit($event)"></app-homepage>
+<app-discussionforum [role]="loginrole" class="d-none"></app-discussionforum>
 
 <!-- alert message div -->
 <div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"

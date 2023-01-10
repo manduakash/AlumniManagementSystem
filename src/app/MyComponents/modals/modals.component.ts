@@ -7,6 +7,7 @@ import { Notification } from 'src/app/Model/notification';
 import { AdminService } from 'src/app/Service/admin.service';
 import { NotificationService } from 'src/app/Service/notification.service';
 import { Cookie } from "ng2-cookies/ng2-cookies";
+import { AlumniService } from 'src/app/Service/alumni.service';
 
 @Component({
   selector: 'app-modals',
@@ -28,7 +29,7 @@ export class ModalsComponent implements OnInit {
   @Output() loginroleEmit = new EventEmitter<string>();
   @Input() role = this.loginrole;
 
-  constructor(private adminService: AdminService, private notificationService: NotificationService, private redirect: Router) { }
+  constructor(private adminService: AdminService, private alumniService: AlumniService, private notificationService: NotificationService, private redirect: Router) { }
 
   ngOnInit(): void {
     this.loginrole = Cookie.get("loginrole")
@@ -42,7 +43,11 @@ export class ModalsComponent implements OnInit {
   // for adding notification
   addNotification(){
     this.notificationService.addNotification(this.notification).subscribe(data=>{
-      this.notification = data;
+      if(this.loginrole!="admin"){
+        this.verifyingAdmin();
+      };
+      this.notification.heading = "";
+      this.notification.description = "";
       console.log(data);
       this.notificationService.fetchNotifications().subscribe(data=>{
         this.notifications = data;
@@ -115,9 +120,34 @@ export class ModalsComponent implements OnInit {
         this.goToHome();
       });
   }
+
+   // validation of alumni
+   verifyingAlumni() {
+    this.alumniService.verifyAlumni(this.alumni.alroll, this.alumni.alpassword).subscribe(data => {
+      this.alumni = data;
+      this.alert.isAlert = true;
+      this.alert.type = "success";
+      this.alert.head = "Successfull";
+      this.alert.message = "You have successfully logged in as a Alumni!";
+      this.alertEmit.emit(this.alert)
+      this.loginrole = "alumni"
+      Cookie.set('loginrole','alumni')
+      this.loginroleEmit.emit(this.loginrole)
+    },
+      error => {
+        console.log(error);
+        this.alert.isAlert = true;
+        this.alert.type = "danger";
+        this.alert.head = "Invalid Credentials";
+        this.alert.message = "Please enter valid username and password!";
+        this.alertEmit.emit(this.alert);
+        this.goToHome();
+      });
+  }
+
   //-------------------------------------------
   // for admin
-  onGetAlumnis() {
+  onGetAlumnisAdmin() {
     if(this.loginrole!="admin"){
       this.verifyingAdmin();
     }
@@ -172,8 +202,19 @@ export class ModalsComponent implements OnInit {
   //-------------------------------------------
   // for alumni
   getAlumniByRoll(alroll: number) {
+    if(this.loginrole!="alumni"){
+      this.verifyingAlumni();
+    }
     // redirecting to another link with roll no.
     this.redirect.navigate(['alumni/alm-get-alumni-rollno', alroll]);
+  }
+
+  onGetAlumnis() {
+    if(this.loginrole!="alumni"){
+      this.verifyingAlumni();
+    }
+    // redirecting to another link
+    this.redirect.navigate(['alumni/alm-get-alumnis']);
   }
 
   //-------------------------------------------

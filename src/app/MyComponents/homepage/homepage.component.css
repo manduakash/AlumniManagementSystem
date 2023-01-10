@@ -32,7 +32,9 @@ input:focus{
     url('../../../assets/img/homepage.jpg');
     width: 100vw;
     height: 130vh;
-    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: white;
     padding: 20px;
 }
