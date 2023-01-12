@@ -254,7 +254,7 @@
           </div>
 
           <div class="col-12" *ngIf="role!='alumni'">
-            <label class="form-label">Alumni Roll number</label>
+            <label class="form-label">Alumni Roll number <small>(For login)</small></label>
             <input type="text" class="form-control rounded-pill" placeholder="Enter Roll no. Here"
               [(ngModel)]="alumni.alroll">
           </div>
@@ -265,7 +265,7 @@
           </div>
 
           <div class="col-12">
-            <label for="almGetAlroll" class="form-label">Alumni Roll Number</label>
+            <label for="almGetAlroll" class="form-label">Alumni Roll Number <small>(whom details you want to find)</small></label>
             <input type="text" class="form-control rounded-pill" id="almGetAlroll" placeholder="Enter Roll Number Here"
               [(ngModel)]="alumni.alroll">
           </div>
