@@ -8,6 +8,8 @@ import { AdminService } from 'src/app/Service/admin.service';
 import { NotificationService } from 'src/app/Service/notification.service';
 import { Cookie } from "ng2-cookies/ng2-cookies";
 import { AlumniService } from 'src/app/Service/alumni.service';
+import { DiscussionforumsService } from 'src/app/Service/discussionforums.service';
+import { Discussionforums } from 'src/app/Model/discussionforums';
 
 @Component({
   selector: 'app-modals',
@@ -28,8 +30,10 @@ export class ModalsComponent implements OnInit {
   @Output() notificationsEmit = new EventEmitter<Notification[]>();
   @Output() loginroleEmit = new EventEmitter<string>();
   @Input() role = this.loginrole;
+  discussionforum: Discussionforums = new Discussionforums();
+  discussions!: Discussionforums[];
 
-  constructor(private adminService: AdminService, private alumniService: AlumniService, private notificationService: NotificationService, private redirect: Router) { }
+  constructor(private adminService: AdminService, private alumniService: AlumniService, private notificationService: NotificationService, private redirect: Router, private dfService: DiscussionforumsService) { }
 
   ngOnInit(): void {
     this.loginrole = Cookie.get("loginrole")
@@ -298,5 +302,39 @@ export class ModalsComponent implements OnInit {
         queryParams: { data: btoa(JSON.stringify(this.alert)) }
       });
     })
+  }
+
+  //for discussion forum
+
+  fetchDiscussions(){
+    this.dfService.fetchDiscussions().subscribe( data => {
+      this.discussions = data;
+    }, error => {
+      console.log(error);
+    }
+    );}
+
+  // for creating discussion
+  addDiscussion(){
+    this.dfService.addDiscussionforums(this.discussionforum).subscribe( data=>{
+      this.discussionforum.topic = ""
+      this.discussionforum.description = ""
+      this.discussionforum.createdBy = ""
+
+      this.fetchDiscussions();
+    }, error=>{
+      console.log(error);
+    }
+    )
+  }
+
+  // for updating discussion
+  updateDiscussion(dfno: number){
+    this.dfService.updateDiscussion(dfno, this.discussionforum).subscribe( data=>{
+      this.fetchDiscussions();
+    }, error=>{
+      console.log(error);
+    }
+    )
   }
 }

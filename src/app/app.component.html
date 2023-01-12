@@ -116,7 +116,7 @@
 <app-modals [role]="loginrole" (alertEmit)="alertEmit($event)" (notificationsEmit)="notificationsEmit($event)" (loginroleEmit)="loginroleEmit($event)"></app-modals>
 <app-login (roleEmit)="roleEmit($event)" class="d-none"></app-login>
 <app-homepage class="d-none" (loginroleEmit)="loginroleEmit($event)"></app-homepage>
-<app-discussionforum [role]="loginrole" class="d-none"></app-discussionforum>
+<!-- <app-discussionforum [role]="loginrole" class="d-none"></app-discussionforum> -->
 
 <!-- alert message div -->
 <div *ngIf="isAlert" class="alert alert-{{alert.type}} alert-dismissible fade show text-center py-auto fixed-top"

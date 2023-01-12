@@ -12,72 +12,6 @@
     <button class="btn btn-outline-info fw-bolder font-monospace fs-9 m-0 py-2" data-bs-toggle="modal" data-bs-target="#addDiscussion"><i
             class="bi bi-plus-circle me-2"></i>ADD QUESTIONS</button>
 
-    <!-- create discussions modal -->
-    <div class="modal fade modal-auto-clear" data-bs-timer="1000" id="addDiscussion" tabindex="-1" aria-labelledby="addDiscussionLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-white">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5 font-monospace" id="addDiscussionLabel">ADD DISCUSSION</h1>
-            <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <form (ngSubmit)="addDiscussion()">
-                <div class="col-12">
-                <label for="dfTopic" class="form-label">Discussion Topic</label>
-                <input type="text" class="form-control rounded-pill" id="dfTopic" placeholder="Enter Discussion Topic Here"
-                    [(ngModel)]="discussionforum.topic">
-                </div>
-                <div class="col-12">
-                <label for="dfDescription" class="form-label">Discussion description</label>
-                <input type="text" class="form-control rounded-pill" id="dfDescription" placeholder="Enter Discussion description Here"
-                [(ngModel)]="discussionforum.description">
-                </div>
-                <div class="col-12">
-                <label for="dfCreatedBy" class="form-label">Name of Discussion Creater</label>
-                <input type="text" class="form-control rounded-pill" id="dfCreatedBy" placeholder="Enter Creater Name Here"
-                [(ngModel)]="discussionforum.createdBy">
-                </div>
-                <div class="modal-footer mt-3 justify-content-center">
-                <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Add Discussion</button>
-                <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal" ><i class="bi bi-x-circle me-2"></i>Cancel</button>
-                </div>
-            </form>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <!-- update discussions modal -->
-    <div class="modal fade modal-auto-clear" data-bs-timer="1000" id="updateDiscussion" tabindex="-1" aria-labelledby="updateDiscussionLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-white">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5 font-monospace" id="updateDiscussionLabel">UPDATE DISCUSSION</h1>
-            <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <form (ngSubmit)="updateDiscussion(discussionforum.dfno)">
-                <div class="col-12">
-                <label for="dfTopic" class="form-label">Discussion Topic</label>
-                <input type="text" class="form-control rounded-pill" id="dfUpdateTopic" placeholder="Enter Discussion Topic Here"
-                    [(ngModel)]="discussionforum.topic">
-                </div>
-                <div class="col-12">
-                <label for="dfDescription" class="form-label">Discussion description</label>
-                <input type="text" class="form-control rounded-pill" id="dfUpdateDescription" placeholder="Enter Discussion description Here"
-                [(ngModel)]="discussionforum.description">
-                </div>
-
-                <div class="modal-footer mt-3 justify-content-center">
-                <button type="submit" class="btn btn-info rounded-pill text-light text-center px-5" data-bs-dismiss="modal">Update Discussion</button>
-                <button type="button" class="btn btn-secondary rounded-pill px-5" data-bs-dismiss="modal" ><i class="bi bi-x-circle me-2"></i>Cancel</button>
-                </div>
-            </form>
-            </div>
-        </div>
-        </div>
-    </div>
-
     <!-- forum cards -->
     <div *ngFor="let discussion of discussions" class="d-flex forum position-relative my-4 p-3 shadow rounded-2 text-decoration-none">
         <div>
@@ -86,8 +20,8 @@
             <div class="actions">
                 <button (click)="viewDiscussion(discussion.dfno)" type="button" class="btn btn-sm btn-success rounded-pill me-2 px-3 text-white"><i
                         class="bi bi-eye-fill me-2"></i>View Replies</button>
-                <!-- <button *ngIf="loginrole === 'admin'" data-bs-toggle="modal" data-bs-target="#updateDiscussion" type="button" class="btn btn-sm btn-warning rounded-pill me-2 px-3 text-white"><i
-                        class="bi bi-pencil-fill me-2"></i>Edit</button> -->
+                <button *ngIf="loginrole === 'admin'" data-bs-toggle="modal" data-bs-target="#updateDiscussion" type="button" class="btn btn-sm btn-warning rounded-pill me-2 px-3 text-white"><i
+                        class="bi bi-pencil-fill me-2"></i>Edit</button>
                 <button *ngIf="loginrole === 'admin'" (click)="deleteDiscussion(discussion.dfno)" type="button" class="btn btn-sm btn-danger rounded-pill me-2 px-3"><i
                         class="bi bi-trash3-fill me-2"></i>Delete</button>
             </div>

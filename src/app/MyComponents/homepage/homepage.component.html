@@ -54,7 +54,7 @@
 
     <!-- discussion forum -->
     <div class="container my-3 py-2">
-        <app-discussionforum [role]="loginrole"></app-discussionforum>
+        <app-discussionforum></app-discussionforum>
     </div>
 
     <!-- create alumni account -->
@@ -78,7 +78,7 @@
         <form (ngSubmit)="getAlumniByRoll(alumni.alroll)">
             <div class="row my-5">
                 <div class="col-8 rounded-pill shadow px-0 ms-5">
-                    <input type="text" class="form-control rounded-pill mx-0 font-monospace" id="almGetAlrollHomepage"
+                    <input type="text" class="form-control rounded-pill mx-0 font-monospace"
                         placeholder="Enter Roll Number Here" [(ngModel)]="alumni.alroll">
                 </div>
                 <div class="col-3 justify-content-center ms-4">
@@ -105,7 +105,7 @@
         <form (ngSubmit)="getAlmByDname(alumni.department.dname)">
             <div class="row my-5">
                 <div class="col-8 rounded-pill shadow px-0 ms-5">
-                    <input type="text" class="form-control rounded-pill mx-0 font-monospace" id="almGetDnameHomepage"
+                    <input type="text" class="form-control rounded-pill mx-0 font-monospace"
                         placeholder="Enter Department Name Here" [(ngModel)]="alumni.department.dname">
                 </div>
                 <div class="col-3 justify-content-center ms-4">

@@ -23,17 +23,17 @@ export class DiscussionforumComponent implements OnInit {
     this.loginrole = Cookie.get("loginrole");
   }
 
-  fetchDiscussions(){
-  this.dfService.fetchDiscussions().subscribe( data => {
-    this.discussions = data;
-  }, error => {
-    console.log(error);
-  }
-  );}
-
   viewDiscussion(dfno: number){
     this.redirect.navigate(['messageboard', dfno]);
   }
+
+  fetchDiscussions(){
+    this.dfService.fetchDiscussions().subscribe( data => {
+      this.discussions = data;
+    }, error => {
+      console.log(error);
+    }
+    );}
 
   // for creating discussion
   addDiscussion(){
